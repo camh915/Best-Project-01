@@ -26,11 +26,15 @@ WHEN I click on the TV show
 THEN the amount of time that it will take to binge-watch the show will populate in the appropriate section
 
 WHEN the information about the TV show populate
-THEN I will be able to click on a section about the actors
+THEN I will be able to click on a section about the actors/more about the show
 
 WHEN I click on the section about the actors
 THEN I will find Wikipedia pages to each actor individually
-Today is Wednesday, and it's after lunch
 
+WHEN I click on the section about the TV show
+THEN I will see a trailer, description about the show, and current rating.
+
+WHEN I look up multiple TV shows to watch
+THEN all of the previous searches are still saved
 
 
