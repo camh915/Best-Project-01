@@ -6,6 +6,11 @@ Too old to meme
 
 Adding a new line
 
+## User Story
+AS A person who watches a lot of TV
+I WANT to know how long it would take to watch all of a given TV series
+SO THAT I can make informed decisions on which show to watch next.
+
 ## Acceptance Criteria
 
 WHEN I navigate to the homepage
@@ -25,3 +30,7 @@ THEN I will be able to click on a section about the actors
 
 WHEN I click on the section about the actors
 THEN I will find Wikipedia pages to each actor individually
+Today is Wednesday, and it's after lunch
+
+
+
