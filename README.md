@@ -7,6 +7,7 @@ Too old to meme
 Adding a new line
 
 ## User Story
+
 AS A person who watches a lot of TV
 I WANT to know how long it would take to watch all of a given TV series
 SO THAT I can make informed decisions on which show to watch next.
@@ -37,4 +38,10 @@ THEN I will see a trailer, description about the show, and current rating.
 WHEN I look up multiple TV shows to watch
 THEN all of the previous searches are still saved
 
+## APIs
 
+[link for api](https://developers.themoviedb.org/3/trending/get-trending)
+
+[Api link](https://developers.themoviedb.org/3/people/get-person-details)
+
+[Api link for Review](https://developers.themoviedb.org/3/reviews/get-review-details)
