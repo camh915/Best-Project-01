@@ -11,12 +11,7 @@ var btnContainer = document.querySelector(".list-group")
 
 var savedBtns = btnContainer.getElementsByClassName('a');
 
-for (var i = 0; i < savedBtns.length; i++) {
-  savedBtns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+
 
 function searchTvShow(searchText) {
   //creating API url for search based on searchtext.
@@ -115,4 +110,4 @@ function addClickHandler() {
     console.log("btnclick");
     document.location.href = "./characters.html";
   });
-}
+};
