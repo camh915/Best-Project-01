@@ -3,6 +3,7 @@ var baseUrl = "https://api.themoviedb.org/3";
 var popularUrl = baseUrl + "/tv/popular?language=en-US&api_key=" + showsApikey;
 var baseImageUrl = "https://image.tmdb.org/t/p/original/";
 var searchResultsEl = $("#search-results");
+var titles = [];
 
 var SearchEL = document.getElementById("title-search");
 
@@ -72,6 +73,11 @@ function displaySearchResult(results) {
     searchResultsEl.append(cardEl);
   }
   addClickHandler();
+}
+
+// adds saved series/show to saved list
+function storeSavedTitles() {
+  localStorage.setItem("titles", JSON.stringify(titles));
 }
 
 SearchEL.addEventListener("keypress", function (event) {
