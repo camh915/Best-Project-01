@@ -136,6 +136,6 @@ function addClickHandler() {
 
   $(".btn-show").on("click", function () {
     console.log("btnclick");
-    document.location.href = "./characters.html";
+    document.location.href = "./details.html";
   });
 };
