@@ -15,7 +15,7 @@ for (var i = 0; i < savedBtns.length; i++) {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
-  });
+  })};
 
 function searchTvShow(searchText) {
   //creating API url for search based on searchtext.
@@ -91,8 +91,7 @@ SearchEL.addEventListener("keypress", function (event) {
   }
 });
 
-var charactersButton = document.getElementById("characters-button");
-var detailsButton = document.getElementById("details-button");
+
 
 charactersButton.onclick = function () {
   document.location.href = "./characters.html";
