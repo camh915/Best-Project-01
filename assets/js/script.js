@@ -3,6 +3,7 @@ var baseUrl = "https://api.themoviedb.org/3";
 var popularUrl = baseUrl + "/tv/popular?language=en-US&api_key=" + showsApikey;
 var baseImageUrl = "https://image.tmdb.org/t/p/original/";
 var searchResultsEl = $("#search-results");
+var savedList = document.querySelector("#saved-list");
 var titles = [];
 
 var SearchEL = document.getElementById("title-search");
@@ -72,6 +73,33 @@ function displaySearchResult(results) {
 // adds saved series/show to saved list
 function storeSavedTitles() {
   localStorage.setItem("titles", JSON.stringify(titles));
+}
+
+// adds the saved titles to the saved list
+function renderTitles() {
+  savedList.innerHTML = "";
+  
+  console.log(savedList);
+  for (var i = 0; i < titles.length; i++) {
+    var a = document.createElement("a"); //<a></a>
+    a.setAttribute("class", "list-group-item list-group-item-action");
+    // href # is placeholder
+    a.setAttribute("href", "#");
+    a.innerText = savedList[i];
+
+    savedList.append(a);
+  }
+}
+
+// displays the saved list when page initializes
+function init() {
+  var storedTitles = JSON.parse(localStorage.getItem("titles"));
+  
+  if (storedTitles !== null) {
+    titles = storedTitles;
+  } 
+
+  renderTitles();
 }
 
 SearchEL.addEventListener("keypress", function (event) {
