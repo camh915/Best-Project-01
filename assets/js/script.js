@@ -91,8 +91,6 @@ SearchEL.addEventListener("keypress", function (event) {
   }
 });
 
-
-
 charactersButton.onclick = function () {
   document.location.href = "./characters.html";
 };
