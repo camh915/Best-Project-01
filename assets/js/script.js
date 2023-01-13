@@ -45,27 +45,33 @@ function displaySearchResult(results) {
     var posterEl = document.createElement("img"); //<img src="..."></img>
     var posterUrl = baseImageUrl + show.poster_path;
     posterEl.src = posterUrl;
-    posterEl.height = 400;
-    posterEl.width = 400;
+    posterEl.height = 200;
+    posterEl.width = 200;
 
     // add a button to go to show details page
     var buttonShowEl = document.createElement("btn"); //<button ></button>
     buttonShowEl.innerText = "Learn more about the show";
-    $(buttonShowEl).addClass("btn btn-primary");
+    $(buttonShowEl).addClass("btn btn-primary btn-show");
     var buttonCharEl = document.createElement("btn"); //<button ></button>
     buttonCharEl.innerText = "Learn more about the character";
-    $(buttonCharEl).addClass("btn btn-primary");
+    $(buttonCharEl).addClass("btn btn-primary btn-char");
+
+    var buttonBingeEl = document.createElement("btn"); //<button ></button>
+    buttonBingeEl.innerText = "How long to watch?";
+    $(buttonBingeEl).addClass("btn btn-primary");
 
     // add elements to card body
     cardBodyEl.append(cardTitleEl);
     cardBodyEl.append(posterEl);
     cardBodyEl.append(buttonShowEl);
     cardBodyEl.append(buttonCharEl);
+    cardBodyEl.append(buttonBingeEl);
 
     // add card body to card and the card to a container in html
     cardEl.append(cardBodyEl);
     searchResultsEl.append(cardEl);
   }
+  addClickHandler();
 }
 
 SearchEL.addEventListener("keypress", function (event) {
@@ -80,13 +86,16 @@ SearchEL.addEventListener("keypress", function (event) {
   }
 });
 
-var charactersButton = document.getElementById("characters-button");
-var detailsButton = document.getElementById("details-button");
+//var  = document.getElementById("characters-button");
+//var detailsButton = document.getElementById("details-button");
+function addClickHandler() {
+  $(".btn-char").on("click", function () {
+    console.log("btnclick");
+    document.location.href = "./characters.html";
+  });
 
-charactersButton.onclick = function () {
-  document.location.href = "./characters.html";
-};
-
-detailsButton.onclick = function () {
-  document.location.href = "./details.html";
-};
+  $(".btn-show").on("click", function () {
+    console.log("btnclick");
+    document.location.href = "./characters.html";
+  });
+}
