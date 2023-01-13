@@ -8,11 +8,9 @@ var titles = [];
 
 var SearchEL = document.getElementById("title-search");
 
-var btnContainer = document.querySelector(".list-group")
+var btnContainer = document.querySelector(".list-group");
 
-var savedBtns = btnContainer.getElementsByClassName('a');
-
-
+var savedBtns = btnContainer.getElementsByClassName("a");
 
 function searchTvShow(searchText) {
   //creating API url for search based on searchtext.
@@ -34,6 +32,7 @@ function searchTvShow(searchText) {
 }
 
 function displaySearchResult(results) {
+  $(searchResultsEl).empty(); //fix search result render
   for (var i = 0; i < 5; i++) {
     var show = results[i];
 
@@ -90,7 +89,7 @@ function storeSavedTitles() {
 // adds the saved titles to the saved list
 function renderTitles() {
   savedList.innerHTML = "";
-  
+
   console.log(savedList);
   for (var i = 0; i < titles.length; i++) {
     var a = document.createElement("a"); //<a></a>
@@ -106,10 +105,10 @@ function renderTitles() {
 // displays the saved list when page initializes
 function init() {
   var storedTitles = JSON.parse(localStorage.getItem("titles"));
-  
+
   if (storedTitles !== null) {
     titles = storedTitles;
-  } 
+  }
 
   renderTitles();
 }
@@ -120,7 +119,7 @@ SearchEL.addEventListener("keypress", function (event) {
     //checking if pressed key is enter or not,we want to run the search only on enter.
     var searchText = event.target.value; //get value user entered in input box.
     //console.log("text searched ", searchText);
-
+    event.target.value = "";
     // calling function to search for the tv show entered
     searchTvShow(searchText);
   }
@@ -138,4 +137,4 @@ function addClickHandler() {
     console.log("btnclick");
     document.location.href = "./details.html";
   });
-};
+}
