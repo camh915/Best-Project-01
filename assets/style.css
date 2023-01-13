@@ -1,8 +1,17 @@
-.input-group-text{
-    background-color: orange;
-    width: 50%;
+.input-group-text {
+  background-color: orange;
+  width: 50%;
 }
-.input-group{
-    width:30%;
-   color
+
+.input-group {
+  width: 30%;
+}
+
+.card {
+  width: 50%;
+  text-align: center;
+}
+
+#search-results {
+  display: flex;
 }
