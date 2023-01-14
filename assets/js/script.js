@@ -106,7 +106,9 @@ function popularShows() {
 }
 
 function displayPopularShows(results) {
+
   console.log(results);
+
   for (var i = 0; i < 3; i++) {
     var show = results[i];
 
@@ -167,7 +169,7 @@ function storeSavedTitles() {
 function renderTitles() {
   savedList.innerHTML = "";
 
-  console.log(titles);
+  // console.log(titles);
   for (var i = 0; i < titles.length; i++) {
     var a = document.createElement("a"); //<a></a>
     a.setAttribute("class", "list-group-item list-group-item-action");
@@ -230,44 +232,40 @@ function addClickHandler() {
 }
 
 function howManySeasons(tvId) {
-  var howManySeasonsUrl =
-    baseUrl +
-    "/tv/" +
-    tvId +
-    "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
 
-  fetch(howManySeasonsUrl)
-    .then(function (response) {
-      console.log(response);
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      console.log(data.seasons);
-      console.log(data.seasons.length);
-      howManyEpisodes(data.seasons.length);
-    });
+var howManySeasonsUrl = baseUrl + "/tv/" + tvId + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
+ 
+fetch(howManySeasonsUrl)
+.then(function (response) {
+  console.log(response);
+  return response.json();
+})
+.then(function(data) {
+  console.log(data);
+  console.log(data.seasons);
+  console.log(data.seasons.length);
+  howManyEpisodes(data.seasons.length);
 }
+);
 
 // for each season of the show, find how many episodes there are
+
 function howManyEpisodes(seasonNumbers) {
   for (var i = 1; i < seasonNumbers + 1; i++) {
-    var howManyEpisodesUrl =
-      baseUrl +
-      "/tv/65495/season/" +
-      [i] +
-      "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
-
-    fetch(howManyEpisodesUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        runTimes(data.episodes);
-      });
-  }
+    var howManyEpisodesUrl = baseUrl + "/tv/" + tvId +"/season/" + [i] + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
+ 
+  fetch(howManyEpisodesUrl)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    runTimes(data.episodes);
+    console.log(data.episodes);
+  });
 }
-
+}
+}
+ 
 var totalRunTime = [];
 // get the runtimes for each episode
 function runTimes(episodes) {
@@ -281,6 +279,26 @@ function runTimes(episodes) {
   for (var i = 0; i < totalRunTime.length; i++) {
     sum += totalRunTime[i];
   }
-
+ 
   console.log(sum);
+  timeCalculation(sum);
+}
+
+function timeCalculation(sum) {
+// how many minutes in a day
+  var dayMinutes = (60 * 24)
+
+  // shows us how many days
+  var days = Math.floor(sum/dayMinutes);
+  console.log(days);
+
+  // shows us how many hours
+  var minutesToHours = (sum%dayMinutes);
+ var hours = Math.floor(minutesToHours/60);
+ console.log(hours);
+
+//  shows us how many minutes
+ var remaindingMinutes = (minutesToHours%60);
+ console.log(remaindingMinutes);
+  
 }
