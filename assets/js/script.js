@@ -81,6 +81,71 @@ function displaySearchResult(results) {
   addClickHandler();
 }
 
+console.log(popularShows());
+
+function popularShows() {
+  fetch(popularUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      displayPopularShows(data.results)
+    });
+}
+
+
+
+function displayPopularShows(results) {
+  console.log(results)
+  for (var i = 0; i < 3; i++) {
+    var show = results[i];
+
+    // create a card for the tv show
+    var cardEl = document.getElementsByClassName('card')[i]
+    console.log(cardEl)
+
+    var cardBodyEl = cardEl.children[1];
+
+    // create a card title
+    var cardTitleEl = cardBodyEl.children[0];
+
+    cardTitleEl.innerText = show.name;
+
+    // create an element to show the poster and add it to the card body
+    var posterEl = cardEl.children[0]; //<img src="..."></img>
+    var posterUrl = baseImageUrl + show.poster_path;
+    console.log(posterUrl)
+
+    posterEl.src = posterUrl;
+    posterEl.height = 200;
+    posterEl.width = 200;
+
+    // add a button to go to show details page
+    var buttonShowEl = document.createElement("btn"); //<button ></button>
+    buttonShowEl.innerText = "Learn more about the show";
+    $(buttonShowEl).addClass("btn btn-primary btn-show");
+    var buttonCharEl = document.createElement("btn"); //<button ></button>
+    buttonCharEl.innerText = "Learn more about the character";
+    $(buttonCharEl).addClass("btn btn-primary btn-char");
+
+    var buttonBingeEl = document.createElement("btn"); //<button ></button>
+    buttonBingeEl.innerText = "How long to watch?";
+    $(buttonBingeEl).addClass("btn btn-primary");
+
+    // add elements to card body
+    // cardBodyEl.append(cardTitleEl);
+    // cardBodyEl.append(posterEl);
+    cardBodyEl.append(buttonShowEl);
+    cardBodyEl.append(buttonCharEl);
+    cardBodyEl.append(buttonBingeEl);
+
+    // add card body to card and the card to a container in html
+    // cardEl.append(cardBodyEl);
+    // searchResultsEl.append(cardEl);
+  }
+}
+
 // adds saved series/show to saved list
 function storeSavedTitles() {
   localStorage.setItem("titles", JSON.stringify(titles));
