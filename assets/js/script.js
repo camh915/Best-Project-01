@@ -120,6 +120,11 @@ SearchEL.addEventListener("keypress", function (event) {
     var searchText = event.target.value; //get value user entered in input box.
     //console.log("text searched ", searchText);
     event.target.value = "";
+
+    // store the searched text in titles array and save the data to localStorage
+    titles.push(searchText);
+    storeSavedTitles();
+
     // calling function to search for the tv show entered
     searchTvShow(searchText);
   }
