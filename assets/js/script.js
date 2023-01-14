@@ -41,7 +41,7 @@ function displaySearchResult(results) {
 
     // create a card for the tv show
     var cardEl = document.createElement("div");
-    $(cardEl).addClass("card");
+    $(cardEl).addClass("card movie-card");
 
     var cardBodyEl = document.createElement("div");
     $(cardBodyEl).addClass("card-body");
@@ -58,10 +58,15 @@ function displaySearchResult(results) {
     posterEl.height = 200;
     posterEl.width = 200;
 
+    // create a div to add all the buttons
+    var buttonContainer = document.createElement("div");
+    $(buttonContainer).addClass("action-buttons");
+
     // add a button to go to show details page
     var buttonShowEl = document.createElement("btn"); //<button ></button>
     buttonShowEl.innerText = "Learn more about the show";
     $(buttonShowEl).addClass("btn btn-primary btn-show");
+
     var buttonCharEl = document.createElement("btn"); //<button ></button>
     buttonCharEl.innerText = "Learn more about the character";
     $(buttonCharEl).addClass("btn btn-primary btn-char");
@@ -70,12 +75,15 @@ function displaySearchResult(results) {
     buttonBingeEl.innerText = "How long to watch?";
     $(buttonBingeEl).addClass("btn btn-primary");
 
+    //add buttons to button container
+    buttonContainer.append(buttonShowEl);
+    buttonContainer.append(buttonCharEl);
+    buttonContainer.append(buttonBingeEl);
+
     // add elements to card body
     cardBodyEl.append(cardTitleEl);
     cardBodyEl.append(posterEl);
-    cardBodyEl.append(buttonShowEl);
-    cardBodyEl.append(buttonCharEl);
-    cardBodyEl.append(buttonBingeEl);
+    cardBodyEl.append(buttonContainer);
 
     // add card body to card and the card to a container in html
     cardEl.append(cardBodyEl);
@@ -92,20 +100,20 @@ function popularShows() {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
-      displayPopularShows(data.results)
+      console.log(data);
+      displayPopularShows(data.results);
     });
 }
 
-
-
 function displayPopularShows(results) {
-  // console.log(results)
+
+  console.log(results);
+
   for (var i = 0; i < 3; i++) {
     var show = results[i];
 
     // create a card for the tv show
-    var cardEl = document.getElementsByClassName('card')[i]
+    var cardEl = document.getElementsByClassName("card")[i];
 
     var cardBodyEl = cardEl.children[1];
 
@@ -122,6 +130,10 @@ function displayPopularShows(results) {
     posterEl.height = 200;
     posterEl.width = 200;
 
+    // create a div to add all the buttons
+    var buttonContainer = document.createElement("div");
+    $(buttonContainer).addClass("action-buttons");
+
     // add a button to go to show details page
     var buttonShowEl = document.createElement("btn"); //<button ></button>
     buttonShowEl.innerText = "Learn more about the show";
@@ -137,9 +149,10 @@ function displayPopularShows(results) {
     // add elements to card body
     // cardBodyEl.append(cardTitleEl);
     // cardBodyEl.append(posterEl);
-    cardBodyEl.append(buttonShowEl);
-    cardBodyEl.append(buttonCharEl);
-    cardBodyEl.append(buttonBingeEl);
+    buttonContainer.append(buttonShowEl);
+    buttonContainer.append(buttonCharEl);
+    buttonContainer.append(buttonBingeEl);
+    cardBodyEl.append(buttonContainer);
 
     // add card body to card and the card to a container in html
     // cardEl.append(cardBodyEl);
@@ -162,6 +175,8 @@ function renderTitles() {
     a.setAttribute("class", "list-group-item list-group-item-action");
     // href # is placeholder
     a.setAttribute("href", "#");
+
+    // link should display one of the saved titles from the array
     a.innerText = titles[i];
 
     savedList.append(a);
@@ -171,10 +186,10 @@ function renderTitles() {
 // displays the saved list when page initializes
 function init() {
   var storedTitles = JSON.parse(localStorage.getItem("titles"));
-  // console.log(storedTitles)
+  console.log(storedTitles);
 
   if (storedTitles !== null) {
-    // console.log('titles saved')
+    console.log("titles saved");
     titles = storedTitles;
   }
 
@@ -195,13 +210,15 @@ SearchEL.addEventListener("keypress", function (event) {
     storeSavedTitles();
     console.log(titles);
 
+    // re-render to show newly added text
+    renderTitles();
+
     // calling function to search for the tv show entered
     searchTvShow(searchText);
   }
 });
 
-//var  = document.getElementById("characters-button");
-//var detailsButton = document.getElementById("details-button");
+// creating a event handler function which gets called when items are searched for
 function addClickHandler() {
   $(".btn-char").on("click", function () {
     console.log("btnclick");
@@ -215,7 +232,8 @@ function addClickHandler() {
 }
 
 function howManySeasons(tvId) {
-  var howManySeasonsUrl = baseUrl + "/tv/" + tvId + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
+
+var howManySeasonsUrl = baseUrl + "/tv/" + tvId + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
  
 fetch(howManySeasonsUrl)
 .then(function (response) {
@@ -233,7 +251,6 @@ fetch(howManySeasonsUrl)
 // for each season of the show, find how many episodes there are
 
 function howManyEpisodes(seasonNumbers) {
- 
   for (var i = 1; i < seasonNumbers + 1; i++) {
     var howManyEpisodesUrl = baseUrl + "/tv/" + tvId +"/season/" + [i] + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
  
@@ -253,12 +270,12 @@ var totalRunTime = [];
 // get the runtimes for each episode
 function runTimes(episodes) {
   for (var i = 0; i < episodes.length; i++) {
-   console.log(episodes[i].runtime);
-   totalRunTime.push(episodes[i].runtime);
+    console.log(episodes[i].runtime);
+    totalRunTime.push(episodes[i].runtime);
   }
   console.log(totalRunTime);
   var sum = 0;
- 
+
   for (var i = 0; i < totalRunTime.length; i++) {
     sum += totalRunTime[i];
   }
