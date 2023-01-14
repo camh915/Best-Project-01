@@ -216,9 +216,6 @@ function addClickHandler() {
   });
 }
 
-// call init function that renders saved titles from localStorage
-init();
-
 function howManySeasons(tvId) {
   var howManySeasonsUrl =
     baseUrl +
