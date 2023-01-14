@@ -41,7 +41,7 @@ function displaySearchResult(results) {
 
     // create a card for the tv show
     var cardEl = document.createElement("div");
-    $(cardEl).addClass("card");
+    $(cardEl).addClass("card movie-card");
 
     var cardBodyEl = document.createElement("div");
     $(cardBodyEl).addClass("card-body");
@@ -58,10 +58,15 @@ function displaySearchResult(results) {
     posterEl.height = 200;
     posterEl.width = 200;
 
+    // create a div to add all the buttons
+    var buttonContainer = document.createElement("div");
+    $(buttonContainer).addClass("action-buttons");
+
     // add a button to go to show details page
     var buttonShowEl = document.createElement("btn"); //<button ></button>
     buttonShowEl.innerText = "Learn more about the show";
     $(buttonShowEl).addClass("btn btn-primary btn-show");
+
     var buttonCharEl = document.createElement("btn"); //<button ></button>
     buttonCharEl.innerText = "Learn more about the character";
     $(buttonCharEl).addClass("btn btn-primary btn-char");
@@ -70,12 +75,15 @@ function displaySearchResult(results) {
     buttonBingeEl.innerText = "How long to watch?";
     $(buttonBingeEl).addClass("btn btn-primary");
 
+    //add buttons to button container
+    buttonContainer.append(buttonShowEl);
+    buttonContainer.append(buttonCharEl);
+    buttonContainer.append(buttonBingeEl);
+
     // add elements to card body
     cardBodyEl.append(cardTitleEl);
     cardBodyEl.append(posterEl);
-    cardBodyEl.append(buttonShowEl);
-    cardBodyEl.append(buttonCharEl);
-    cardBodyEl.append(buttonBingeEl);
+    cardBodyEl.append(buttonContainer);
 
     // add card body to card and the card to a container in html
     cardEl.append(cardBodyEl);
@@ -120,6 +128,10 @@ function displayPopularShows(results) {
     posterEl.height = 200;
     posterEl.width = 200;
 
+    // create a div to add all the buttons
+    var buttonContainer = document.createElement("div");
+    $(buttonContainer).addClass("action-buttons");
+
     // add a button to go to show details page
     var buttonShowEl = document.createElement("btn"); //<button ></button>
     buttonShowEl.innerText = "Learn more about the show";
@@ -135,9 +147,10 @@ function displayPopularShows(results) {
     // add elements to card body
     // cardBodyEl.append(cardTitleEl);
     // cardBodyEl.append(posterEl);
-    cardBodyEl.append(buttonShowEl);
-    cardBodyEl.append(buttonCharEl);
-    cardBodyEl.append(buttonBingeEl);
+    buttonContainer.append(buttonShowEl);
+    buttonContainer.append(buttonCharEl);
+    buttonContainer.append(buttonBingeEl);
+    cardBodyEl.append(buttonContainer);
 
     // add card body to card and the card to a container in html
     // cardEl.append(cardBodyEl);
