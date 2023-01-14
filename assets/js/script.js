@@ -12,6 +12,8 @@ var btnContainer = document.querySelector(".list-group");
 
 var savedBtns = btnContainer.getElementsByClassName("a");
 
+init();
+
 function searchTvShow(searchText) {
   //creating API url for search based on searchtext.
   var searchUrl =
@@ -81,7 +83,7 @@ function displaySearchResult(results) {
   addClickHandler();
 }
 
-console.log(popularShows());
+// console.log(popularShows());
 
 function popularShows() {
   fetch(popularUrl)
@@ -103,7 +105,6 @@ function displayPopularShows(results) {
 
     // create a card for the tv show
     var cardEl = document.getElementsByClassName('card')[i]
-    console.log(cardEl)
 
     var cardBodyEl = cardEl.children[1];
 
@@ -115,7 +116,6 @@ function displayPopularShows(results) {
     // create an element to show the poster and add it to the card body
     var posterEl = cardEl.children[0]; //<img src="..."></img>
     var posterUrl = baseImageUrl + show.poster_path;
-    console.log(posterUrl)
 
     posterEl.src = posterUrl;
     posterEl.height = 200;
@@ -155,13 +155,13 @@ function storeSavedTitles() {
 function renderTitles() {
   savedList.innerHTML = "";
 
-  console.log(savedList);
+  console.log(titles);
   for (var i = 0; i < titles.length; i++) {
     var a = document.createElement("a"); //<a></a>
     a.setAttribute("class", "list-group-item list-group-item-action");
     // href # is placeholder
     a.setAttribute("href", "#");
-    a.innerText = savedList[i];
+    a.innerText = titles[i];
 
     savedList.append(a);
   }
@@ -170,12 +170,15 @@ function renderTitles() {
 // displays the saved list when page initializes
 function init() {
   var storedTitles = JSON.parse(localStorage.getItem("titles"));
+  console.log(storedTitles)
 
   if (storedTitles !== null) {
+    console.log('titles saved')
     titles = storedTitles;
   }
 
   renderTitles();
+  popularShows();
 }
 
 SearchEL.addEventListener("keypress", function (event) {
@@ -189,6 +192,7 @@ SearchEL.addEventListener("keypress", function (event) {
     // store the searched text in titles array and save the data to localStorage
     titles.push(searchText);
     storeSavedTitles();
+    console.log(titles);
 
     // calling function to search for the tv show entered
     searchTvShow(searchText);
