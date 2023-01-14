@@ -143,3 +143,6 @@ function addClickHandler() {
     document.location.href = "./details.html";
   });
 }
+
+// call init function that renders saved titles from localStorage
+init();
