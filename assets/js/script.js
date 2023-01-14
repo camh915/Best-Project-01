@@ -41,7 +41,7 @@ function displaySearchResult(results) {
 
     // create a card for the tv show
     var cardEl = document.createElement("div");
-    $(cardEl).addClass("card");
+    $(cardEl).addClass("card movie-card");
 
     var cardBodyEl = document.createElement("div");
     $(cardBodyEl).addClass("card-body");
