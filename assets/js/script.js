@@ -144,6 +144,7 @@ function displayPopularShows(results) {
     // cardEl.append(cardBodyEl);
     // searchResultsEl.append(cardEl);
   }
+  addClickHandler();
 }
 
 // adds saved series/show to saved list
