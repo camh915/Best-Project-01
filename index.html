@@ -13,12 +13,18 @@
   <body class="bg-dark">
     <header class ='h1 d-flex justify-content-center w-auto'>Binge Show Calculator</header>
 
-    <div
-      id="featured-shows"
-      class="container row d-flex justify-content-center w-6"
-    >
+    <div id="featured-shows" class="container row d-flex justify-content-center w-6">
       <div class="card w-2" style="width: 10rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img src="" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text">
+            
+          </p>
+        </div>
+      </div>
+      <div class="card w-2" style="width: 10rem">
+        <img src="" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">
@@ -28,17 +34,7 @@
         </div>
       </div>
       <div class="card w-2" style="width: 10rem">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-      <div class="card w-2" style="width: 10rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img src="" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">
@@ -63,54 +59,57 @@
       <!-- div to show the search results -->
       <div id="search-results"></div>
 
-      <div>
-        <div class="list-group mt-2 mb-2 col-4">
-          <a
-            href="#"
-            class="list-group-item list-group-item-action"
-          >
-            1st Saved Show
-          </a>
-          <a href="#" class="list-group-item list-group-item-action"
-            >2nd Saved Show</a
-          >
-          <a href="#" class="list-group-item list-group-item-action"
-            >3rd Saved Show</a
-          >
-          <a href="#" class="list-group-item list-group-item-action"
-            >4th Saved Show</a
-          >
+      <div class="row container">
+
+        <div>
+          <div class="list-group mt-2 mb-2 col-4">
+            <a
+              href="#"
+              class="list-group-item list-group-item-action"
+            >
+              1st Saved Show
+            </a>
+            <a href="#" class="list-group-item list-group-item-action"
+              >2nd Saved Show</a
+            >
+            <a href="#" class="list-group-item list-group-item-action"
+              >3rd Saved Show</a
+            >
+            <a href="#" class="list-group-item list-group-item-action"
+              >4th Saved Show</a
+            >
+          </div>
         </div>
+
+        <div>
+          <!-- Hours of sleep box -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default w-"
+              >Hours of sleep
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </div>
+        </div>
+
+        <div>
+          <!-- Hours of Other Life Things box -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default w-"
+              >Hours of Other Life Things</span
+            >
+
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Input hours of other life things"
+            />
+          </div>
       </div>
-
-      <div>
-        <!-- Hours of sleep box -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default w-"
-            >Hours of sleep
-          </span>
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"
-          />
-        </div>
-      </div>
-
-      <div>
-        <!-- Hours of Other Life Things box -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default w-"
-            >Hours of Other Life Things</span
-          >
-
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Input hours of other life things"
-          />
-        </div>
       </div>
     </main>
 
