@@ -96,7 +96,9 @@ function renderTitles() {
     a.setAttribute("class", "list-group-item list-group-item-action");
     // href # is placeholder
     a.setAttribute("href", "#");
-    a.innerText = savedList[i];
+
+    // link should display one of the saved titles from the array
+    a.innerText = titles[i];
 
     savedList.append(a);
   }
@@ -130,8 +132,7 @@ SearchEL.addEventListener("keypress", function (event) {
   }
 });
 
-//var  = document.getElementById("characters-button");
-//var detailsButton = document.getElementById("details-button");
+// creating a event handler function which gets called when items are searched for
 function addClickHandler() {
   $(".btn-char").on("click", function () {
     console.log("btnclick");
