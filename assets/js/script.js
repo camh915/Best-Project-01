@@ -127,6 +127,9 @@ SearchEL.addEventListener("keypress", function (event) {
     titles.push(searchText);
     storeSavedTitles();
 
+    // re-render to show newly added text
+    renderTitles();
+
     // calling function to search for the tv show entered
     searchTvShow(searchText);
   }
