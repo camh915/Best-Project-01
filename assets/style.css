@@ -32,7 +32,7 @@
 
 #tv-show-info {
   display: flex;
-  gap: 32px;
+  gap: 24px;
 }
 
 .description-section {
@@ -43,4 +43,10 @@
 .genres {
   border: 1px solid white;
   padding: 8px;
+}
+
+#cast-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }

@@ -7,6 +7,8 @@ var tvShowImageEl = document.getElementById("tv-show-image");
 var tvShowGenresEl = document.getElementById("tv-show-genres");
 var createdBy = document.getElementById("created-by");
 var tvDescriptionEl = document.getElementById("tv-description");
+var castDetailEl = document.getElementById("cast-credits");
+var ratingEl = document.getElementById("rating");
 
 var showsId = localStorage.getItem("showsId");
 console.log(showsId);
@@ -62,6 +64,23 @@ function renderShowDetails(show) {
   $(descriptionDetail).addClass("description");
   descriptionDetail.innerText = show.overview;
   tvDescriptionEl.append(descriptionDetail);
+
+  var castNameEl = document.createElement("h5");
+  castNameEl.innerText = "Cast:";
+  document.getElementById("cast-title").append(castNameEl);
+
+  for (var i = 0; i < show.credits.cast.length; i++) {
+    var creditDetail = document.createElement("p");
+    $(creditDetail).addClass("credit");
+    var castEl = show.credits.cast[i];
+    creditDetail.innerText = castEl.name;
+    document.getElementById("cast-list").append(creditDetail);
+  }
+
+  var showRating = document.createElement("h5");
+  $(showRating).addClass("rate");
+  showRating.innerText = "Rating : " + show.vote_average;
+  ratingEl.append(showRating);
 }
 
 function getTvShowData() {
@@ -69,7 +88,7 @@ function getTvShowData() {
     baseUrl +
     "/tv/" +
     showsId +
-    "?language=en-US&append_to_response=videos&api_key=" +
+    "?language=en-US&append_to_response=videos,credits&api_key=" +
     showsApikey;
 
   fetch(showDetailUrl)
