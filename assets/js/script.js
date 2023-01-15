@@ -235,16 +235,26 @@ function addClickHandler() {
 // Get the amount of sleep
 sleepInput.addEventListener("keypress", function(event) {
   if(event.key === "Enter") {
-    console.log(sleepInput.value)
+    console.log(sleepInput.value);
+    addOther(sleepInput.value);
   }
 });
 
-// Get the amount of other activites
+// Get the value of other number
 otherInput.addEventListener("keypress", function(event) {
   if(event.key === "Enter") {
     console.log(otherInput.value)
+    addOther(otherInput.value);
   }
 });
+
+function addOther(sleepNumber, otherNumber) {
+  var totalOther = (sleepNumber + otherNumber)
+
+  console.log(totalOther);
+ }
+
+
 
 // see how many seasons a show has
 function howManySeasons(tvId) {
@@ -294,9 +304,12 @@ function runTimes(episodes) {
   for (var i = 0; i < totalRunTime.length; i++) {
     sum += totalRunTime[i];
   }
+
+  sumTwo = sum;
+  sumTwo += 3240; //sumTwo = sumTwo + other inputted values
  
-  console.log(sum);
-  timeCalculation(sum);
+  console.log(sumTwo);
+  timeCalculation(sumTwo);
 }
 
 function timeCalculation(sum) {
@@ -315,5 +328,30 @@ function timeCalculation(sum) {
 //  shows us how many minutes
  var remaindingMinutes = (minutesToHours%60);
  console.log(remaindingMinutes);
+
+//  allows days, hours, and minutes to display to homepage
+ var dhm = [days, hours, remaindingMinutes];
+ console.log(dhm);
+ displayCalculator(dhm);
+
+ function displayCalculator(times) {
+    var daysText = document.getElementById("days-number");
+    daysText.textContent = (times[0] + " days");
+    if (times[0] == 1) {
+      daysText.textContent = (times[0] + " day")
+    }
+
+    var hoursText = document.getElementById("hours-number");
+    hoursText.textContent = (times[1] + " hours");
+    if (times[1] == 1) {
+      hoursText.textContent = (times[1] + " hour")
+    }
+
+    var minutesText = document.getElementById("minutes-number");
+    minutesText.textContent = (times[2] + " minutes");
+    if (times[2] == 1) {
+      minutesText.textContent = (times[2] + " minute")
+    }
+ }
   
 }
