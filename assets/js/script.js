@@ -233,28 +233,26 @@ function addClickHandler() {
 }
 
 // Get the amount of sleep
-sleepInput.addEventListener("keypress", function(event) {
-  if(event.key === "Enter") {
-    console.log(sleepInput.value);
-    addOther(sleepInput.value);
-  }
-});
+// sleepInput.addEventListener("keypress", function(event) {
+//  if(event.key === "Enter") {
+//    console.log(sleepInput.value);
+ //   addOther(sleepInput.value);
+ // }
+//});
 
 // Get the value of other number
-otherInput.addEventListener("keypress", function(event) {
-  if(event.key === "Enter") {
-    console.log(otherInput.value)
-    addOther(otherInput.value);
-  }
-});
+//otherInput.addEventListener("keypress", function(event) {
+  //if(event.key === "Enter") {
+    //console.log(otherInput.value)
+    //addOther(otherInput.value);
+ // }
+//});
 
-function addOther(sleepNumber, otherNumber) {
-  var totalOther = (sleepNumber + otherNumber)
+//function addOther(sleepNumber, otherNumber) {
+ // var totalOther = (sleepNumber + otherNumber)
 
-  console.log(totalOther);
- }
-
-
+ // console.log(totalOther);
+// }
 
 // see how many seasons a show has
 function howManySeasons(tvId) {
