@@ -50,3 +50,18 @@
   flex-wrap: wrap;
   gap: 16px;
 }
+
+.inputs-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+ 
+#title-search {
+  margin-left: 20px;
+}
+ 
+#calculator-displays {
+  font-size: 80px;
+  margin-left: 300px;
+}

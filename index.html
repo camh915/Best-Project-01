@@ -11,54 +11,91 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Homepage</title>
   </head>
-
+ 
   <body class="bg-dark">
     <header class="h1 d-flex justify-content-center w-auto">
       Binge Show Calculator
     </header>
-
+ 
     <div
       id="featured-shows"
       class="container row d-flex justify-content-center col-12 gap-2"
     >
       <div class="card movie-card w-4" style="width: 15rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text"></p>
         </div>
       </div>
       <div class="card movie-card w-4" style="width: 15rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text"></p>
         </div>
       </div>
       <div class="card movie-card w-4" style="width: 15rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text"></p>
         </div>
       </div>
     </div>
-
+ 
+<!-- Put the inputs for both sleep and other under one container -->
+        <div id="other-inputs-container">
+ 
+          <div class="inputs-section">
+            <!-- Hours of sleep box -->
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default w-"
+                >Hours of sleep
+              </span>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                id="sleep-input"
+              />
+            </div>
+          </div>
+ 
+          <div class="inputs-section">
+            <!-- Hours of Other Life Things box -->
+            <div class="input-group mb-3" >
+              <span class="input-group-text" id="inputGroup-sizing-default w-"
+                >Hours of Other Life Things</span
+              >
+ 
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Input hours of other life things"
+                id="other-input"
+              />
+            </div>
+          </div>
+ 
+        </div>
+ 
     <main class="container my-4">
       <!-- search bar for show/movie -->
-      <div class="row g-3 align-items-center">
+      <div class="inputs-section">
         <div class="col-auto">
-          <label class="col-form-label">Search for Series/Movie:</label>
+          <label class="col-form-label">Search for Series:</label>
         </div>
         <div class="col-auto">
           <input id="title-search" class="form-control"/>
         </div>
       </div>
-
+ 
       <!-- div to show the search results -->
       <div id="search-results"></div>
-
-      <div>
+ 
+      <div class="inputs-section">
         <div class="list-group mt-2 mb-2 col-4" id="saved-list">
           <a href="#" class="list-group-item list-group-item-action">
             1st Saved Show
@@ -74,42 +111,17 @@
           >
         </div>
       </div>
-
-      <div>
-        <!-- Hours of sleep box -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default w-"
-            >Hours of sleep
-          </span>
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"
-            id="sleep-input"
-          />
-        </div>
-      </div>
-
-      <div>
-        <!-- Hours of Other Life Things box -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default w-"
-            >Hours of Other Life Things</span
-          >
-
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Input hours of other life things"
-            id="other-input"
-          />
-        </div>
-      </div>
+ 
+ 
+ 
     </main>
-
+ 
     <section class="container row mb-2" id="calculator-displays">
-      <div class="container row col-12 d-flex justify-content-between">
+      <div class="col 3 text-center">
+        It Will Take You:
+      </div>
+ 
+      <div class="container row d-flex">
         <div class="col 3 text-center" id="days">
           <span class="date_num" id="days-number"></span>
         </div>
@@ -118,11 +130,14 @@
         </div>
         <div class="col 3 text-center" id="minutes">
           <span class="date_num" id="minutes-number"></span>
-
         </div>
       </div>
+ 
+      <div class="container row d-flex">
+        <span class="col 3 text-center" id="enjoy"></span>
+      </div>
     </section>
-
+ 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="./assets/js/script.js"></script>
