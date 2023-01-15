@@ -31,7 +31,7 @@ function searchTvShow(searchText) {
     .then(function (data) {
       console.log(data);
       displaySearchResult(data.results);
-      howManySeasons(data.results[0].id);
+      // howManySeasons(data.results[0].id);
     });
 }
 
@@ -77,7 +77,7 @@ function displaySearchResult(results) {
 
     var buttonBingeEl = document.createElement("btn"); //<button ></button>
     buttonBingeEl.innerText = "How long to watch?";
-    $(buttonBingeEl).addClass("btn btn-primary");
+    $(buttonBingeEl).addClass("btn btn-primary btn-binge");
     buttonBingeEl.setAttribute("data-tv-id",show.id);
 
     //add buttons to button container
@@ -152,7 +152,7 @@ function displayPopularShows(results) {
     var buttonBingeEl = document.createElement("btn"); //<button ></button>
     buttonBingeEl.innerText = "How long to watch?";
     buttonBingeEl.setAttribute("data-tv-id", show.id);
-    $(buttonBingeEl).addClass("btn btn-primary");
+    $(buttonBingeEl).addClass("btn btn-primary btn-binge");
 
     // add elements to card body
     // cardBodyEl.append(cardTitleEl);
@@ -237,6 +237,14 @@ function addClickHandler() {
     console.log(tvId);
     localStorage.setItem("showsId",tvId);
     document.location.href = "./details.html";
+  });
+
+  $(".btn-binge").on("click", function (event) {
+    console.log("btnclick");
+    var tvId = event.target.getAttribute("data-tv-id");
+    console.log(tvId);
+    localStorage.setItem("showsId",tvId);
+    howManySeasons(tvId);
   });
 }
 
