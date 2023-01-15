@@ -78,7 +78,7 @@ function displaySearchResult(results) {
     buttonCharEl.setAttribute("data-tv-id",show.id);
  
     var buttonBingeEl = document.createElement("btn"); //<button ></button>
-    buttonBingeEl.innerText = "How long to watch?";
+    buttonBingeEl.innerText = "Binge This Show";
     $(buttonBingeEl).addClass("btn btn-primary btn-binge");
     buttonBingeEl.setAttribute("data-tv-id",show.id);
  
@@ -152,7 +152,7 @@ function displayPopularShows(results) {
     buttonCharEl.setAttribute("data-tv-id", show.id);
  
     var buttonBingeEl = document.createElement("btn"); //<button ></button>
-    buttonBingeEl.innerText = "How long to watch?";
+    buttonBingeEl.innerText = "Binge This Show";
     buttonBingeEl.setAttribute("data-tv-id", show.id);
     $(buttonBingeEl).addClass("btn btn-primary btn-binge");
  
@@ -287,7 +287,7 @@ function howManySeasons(tvId) {
     baseUrl +
     "/tv/" +
     tvId +
-    "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
+    "api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
  
   fetch(howManySeasonsUrl)
     .then(function (response) {
