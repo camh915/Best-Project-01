@@ -319,17 +319,21 @@ function timeCalculation(sum) {
   // shows us how many days
   var days = Math.floor(sum/dayMinutes);
   console.log(days);
+  
 
   // shows us how many hours
   var minutesToHours = (sum%dayMinutes);
  var hours = Math.floor(minutesToHours/60);
  console.log(hours);
+ 
 
 //  shows us how many minutes
  var remaindingMinutes = (minutesToHours%60);
  console.log(remaindingMinutes);
 
+
 //  allows days, hours, and minutes to display to homepage
+
  var dhm = [days, hours, remaindingMinutes];
  console.log(dhm);
  displayCalculator(dhm);
@@ -354,4 +358,6 @@ function timeCalculation(sum) {
     }
  }
   
+
 }
+
