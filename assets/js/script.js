@@ -291,14 +291,32 @@ function timeCalculation(sum) {
   // shows us how many days
   var days = Math.floor(sum/dayMinutes);
   console.log(days);
+  
 
   // shows us how many hours
   var minutesToHours = (sum%dayMinutes);
  var hours = Math.floor(minutesToHours/60);
  console.log(hours);
+ 
 
 //  shows us how many minutes
  var remaindingMinutes = (minutesToHours%60);
  console.log(remaindingMinutes);
-  
+
+ var dhm = [days, hours, remaindingMinutes];
+ console.log(dhm);
+ displayCalculator(dhm);
+
+ function displayCalculator(times) {
+    var daysText = document.getElementById("days-number");
+    daysText.textContent = times[0];
+
+    var hoursText = document.getElementById("hours-number");
+    hoursText.textContent = times[1];
+
+    var minutesText = document.getElementById("minutes-number");
+    minutesText.textContent = times[2];
+ }
+
 }
+
