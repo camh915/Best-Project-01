@@ -67,14 +67,18 @@ function displaySearchResult(results) {
     var buttonShowEl = document.createElement("btn"); //<button ></button>
     buttonShowEl.innerText = "Learn more about the show";
     $(buttonShowEl).addClass("btn btn-primary btn-show");
+    buttonShowEl.setAttribute("data-tv-id", show.id);
+
 
     var buttonCharEl = document.createElement("btn"); //<button ></button>
     buttonCharEl.innerText = "Learn more about the character";
     $(buttonCharEl).addClass("btn btn-primary btn-char");
+    buttonCharEl.setAttribute("data-tv-id",show.id);
 
     var buttonBingeEl = document.createElement("btn"); //<button ></button>
     buttonBingeEl.innerText = "How long to watch?";
     $(buttonBingeEl).addClass("btn btn-primary");
+    buttonBingeEl.setAttribute("data-tv-id",show.id);
 
     //add buttons to button container
     buttonContainer.append(buttonShowEl);
@@ -107,7 +111,6 @@ function popularShows() {
 }
 
 function displayPopularShows(results) {
-
   console.log(results);
 
   for (var i = 0; i < 3; i++) {
@@ -139,12 +142,16 @@ function displayPopularShows(results) {
     var buttonShowEl = document.createElement("btn"); //<button ></button>
     buttonShowEl.innerText = "Learn more about the show";
     $(buttonShowEl).addClass("btn btn-primary btn-show");
+    buttonShowEl.setAttribute("data-tv-id", show.id);
+
     var buttonCharEl = document.createElement("btn"); //<button ></button>
     buttonCharEl.innerText = "Learn more about the character";
     $(buttonCharEl).addClass("btn btn-primary btn-char");
+    buttonCharEl.setAttribute("data-tv-id", show.id);
 
     var buttonBingeEl = document.createElement("btn"); //<button ></button>
     buttonBingeEl.innerText = "How long to watch?";
+    buttonBingeEl.setAttribute("data-tv-id", show.id);
     $(buttonBingeEl).addClass("btn btn-primary");
 
     // add elements to card body
@@ -154,11 +161,9 @@ function displayPopularShows(results) {
     buttonContainer.append(buttonCharEl);
     buttonContainer.append(buttonBingeEl);
     cardBodyEl.append(buttonContainer);
-
-    // add card body to card and the card to a container in html
-    // cardEl.append(cardBodyEl);
-    // searchResultsEl.append(cardEl);
   }
+  // add click handler
+  addClickHandler();
 }
 
 // adds saved series/show to saved list
@@ -226,71 +231,81 @@ function addClickHandler() {
     document.location.href = "./characters.html";
   });
 
-  $(".btn-show").on("click", function () {
+  $(".btn-show").on("click", function (event) {
     console.log("btnclick");
+    var tvId = event.target.getAttribute("data-tv-id");
+    console.log(tvId);
+    localStorage.setItem("showsId",tvId);
     document.location.href = "./details.html";
   });
 }
 
 // Get the amount of sleep
-sleepInput.addEventListener("keypress", function(event) {
-  if(event.key === "Enter") {
+sleepInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
     console.log(sleepInput.value);
     addOther(sleepInput.value);
   }
 });
 
 // Get the value of other number
-otherInput.addEventListener("keypress", function(event) {
-  if(event.key === "Enter") {
-    console.log(otherInput.value)
+otherInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    console.log(otherInput.value);
     addOther(otherInput.value);
   }
 });
 
 function addOther(sleepNumber, otherNumber) {
-  var totalOther = (sleepNumber + otherNumber)
+  var totalOther = sleepNumber + otherNumber;
 
   console.log(totalOther);
- }
-
-
+}
 
 // see how many seasons a show has
 function howManySeasons(tvId) {
+  var howManySeasonsUrl =
+    baseUrl +
+    "/tv/" +
+    tvId +
+    "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
 
-var howManySeasonsUrl = baseUrl + "/tv/" + tvId + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
- 
-fetch(howManySeasonsUrl)
-.then(function (response) {
-  console.log(response);
-  return response.json();
-})
-.then(function(data) {
-  console.log(data);
-  console.log(data.seasons);
-  console.log(data.seasons.length);
-  howManyEpisodes(data.seasons.length);
+  fetch(howManySeasonsUrl)
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      console.log(data.seasons);
+      console.log(data.seasons.length);
+      howManyEpisodes(data.seasons.length);
+    });
+
+  // for each season of the show, find how many episodes there are
+
+  function howManyEpisodes(seasonNumbers) {
+    for (var i = 1; i < seasonNumbers + 1; i++) {
+      var howManyEpisodesUrl =
+        baseUrl +
+        "/tv/" +
+        tvId +
+        "/season/" +
+        [i] +
+        "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
+
+      fetch(howManyEpisodesUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          runTimes(data.episodes);
+          console.log(data.episodes);
+        });
+    }
+  }
 }
-);
 
-// for each season of the show, find how many episodes there are
-
-function howManyEpisodes(seasonNumbers) {
-  for (var i = 1; i < seasonNumbers + 1; i++) {
-    var howManyEpisodesUrl = baseUrl + "/tv/" + tvId +"/season/" + [i] + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
- 
-  fetch(howManyEpisodesUrl)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    runTimes(data.episodes);
-    console.log(data.episodes);
-  });
-}}
-}
- 
 var totalRunTime = [];
 // get the runtimes for each episode
 function runTimes(episodes) {
@@ -307,57 +322,51 @@ function runTimes(episodes) {
 
   sumTwo = sum;
   sumTwo += 3240; //sumTwo = sumTwo + other inputted values
- 
+
   console.log(sumTwo);
   timeCalculation(sumTwo);
 }
 
 function timeCalculation(sum) {
-// how many minutes in a day
-  var dayMinutes = (60 * 24)
+  // how many minutes in a day
+  var dayMinutes = 60 * 24;
 
   // shows us how many days
-  var days = Math.floor(sum/dayMinutes);
+  var days = Math.floor(sum / dayMinutes);
   console.log(days);
-  
 
   // shows us how many hours
-  var minutesToHours = (sum%dayMinutes);
- var hours = Math.floor(minutesToHours/60);
- console.log(hours);
- 
+  var minutesToHours = sum % dayMinutes;
+  var hours = Math.floor(minutesToHours / 60);
+  console.log(hours);
 
-//  shows us how many minutes
- var remaindingMinutes = (minutesToHours%60);
- console.log(remaindingMinutes);
+  //  shows us how many minutes
+  var remaindingMinutes = minutesToHours % 60;
+  console.log(remaindingMinutes);
 
+  //  allows days, hours, and minutes to display to homepage
 
-//  allows days, hours, and minutes to display to homepage
+  var dhm = [days, hours, remaindingMinutes];
+  console.log(dhm);
+  displayCalculator(dhm);
 
- var dhm = [days, hours, remaindingMinutes];
- console.log(dhm);
- displayCalculator(dhm);
-
- function displayCalculator(times) {
+  function displayCalculator(times) {
     var daysText = document.getElementById("days-number");
-    daysText.textContent = (times[0] + " days");
+    daysText.textContent = times[0] + " days";
     if (times[0] == 1) {
-      daysText.textContent = (times[0] + " day")
+      daysText.textContent = times[0] + " day";
     }
 
     var hoursText = document.getElementById("hours-number");
-    hoursText.textContent = (times[1] + " hours");
+    hoursText.textContent = times[1] + " hours";
     if (times[1] == 1) {
-      hoursText.textContent = (times[1] + " hour")
+      hoursText.textContent = times[1] + " hour";
     }
 
     var minutesText = document.getElementById("minutes-number");
-    minutesText.textContent = (times[2] + " minutes");
+    minutesText.textContent = times[2] + " minutes";
     if (times[2] == 1) {
-      minutesText.textContent = (times[2] + " minute")
+      minutesText.textContent = times[2] + " minute";
     }
- }
-  
-
+  }
 }
-
