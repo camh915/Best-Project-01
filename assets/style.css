@@ -29,3 +29,18 @@
   gap: 8px;
   margin-top: 8px;
 }
+
+#tv-show-info {
+  display: flex;
+  gap: 32px;
+}
+
+.description-section {
+  display: flex;
+  gap: 16px;
+}
+
+.genres {
+  border: 1px solid white;
+  padding: 8px;
+}

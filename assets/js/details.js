@@ -1,8 +1,68 @@
 var showsApikey = "6f740c06220cb598e70409f4b591536e";
 var baseUrl = "https://api.themoviedb.org/3";
+var baseImageUrl = "https://image.tmdb.org/t/p/original";
+var tvShowHeaderEl = document.getElementById("tv-show-header");
+var tvShowInfoEl = document.getElementById("tv-show-info");
+var tvShowImageEl = document.getElementById("tv-show-image");
+var tvShowGenresEl = document.getElementById("tv-show-genres");
+var createdBy = document.getElementById("created-by");
+var tvDescriptionEl = document.getElementById("tv-description");
 
 var showsId = localStorage.getItem("showsId");
 console.log(showsId);
+
+function renderShowDetails(show) {
+  console.log(show);
+  // header displaying tv show name
+  var detailOfShow = document.createElement("div");
+  $(detailOfShow).addClass("display-6");
+  detailOfShow.innerText = show.name;
+  tvShowHeaderEl.append(detailOfShow);
+
+  // image for the poster
+  var showsPosterEl = document.createElement("img"); //<img src="..."></img>
+  var posterUrl = baseImageUrl + show.poster_path;
+  showsPosterEl.src = posterUrl;
+  showsPosterEl.height = 700;
+  showsPosterEl.width = 500;
+  showsPosterEl.style.objectFit = "cover";
+  tvShowImageEl.append(showsPosterEl);
+
+  //Add genres type
+  var genreTextEl = document.createElement("h5");
+  genreTextEl.innerText = "Genres :";
+  tvShowGenresEl.append(genreTextEl);
+
+  for (var i = 0; i < show.genres.length; i++) {
+    var genresDetail = document.createElement("div");
+    $(genresDetail).addClass("genres");
+    var genre = show.genres[i];
+    genresDetail.innerText = genre.name;
+    tvShowGenresEl.append(genresDetail);
+  }
+
+  var createdByEl = document.createElement("h5");
+  createdByEl.innerText = "Created By :";
+  createdBy.append(createdByEl);
+
+  //Add created_by
+  for (var i = 0; i < show.created_by.length; i++) {
+    var createdDetail = document.createElement("div");
+    $(createdDetail).addClass("created-by");
+    var directed = show.created_by[i];
+    createdDetail.innerText = directed.name;
+    createdBy.append(createdDetail);
+  }
+
+  var descEl = document.createElement("h5");
+  descEl.innerText = "OverView:";
+  tvDescriptionEl.append(descEl);
+  // Add description
+  var descriptionDetail = document.createElement("div");
+  $(descriptionDetail).addClass("description");
+  descriptionDetail.innerText = show.overview;
+  tvDescriptionEl.append(descriptionDetail);
+}
 
 function getTvShowData() {
   var showDetailUrl =
@@ -12,12 +72,12 @@ function getTvShowData() {
     "?language=en-US&append_to_response=videos&api_key=" +
     showsApikey;
 
-    fetch(showDetailUrl)
+  fetch(showDetailUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      renderShowDetails(data);
     });
 }
 getTvShowData();
