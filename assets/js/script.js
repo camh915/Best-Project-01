@@ -7,10 +7,11 @@ var savedList = document.querySelector("#saved-list");
 var titles = [];
 
 var SearchEL = document.getElementById("title-search");
-
 var btnContainer = document.querySelector(".list-group");
-
 var savedBtns = btnContainer.getElementsByClassName("a");
+
+var sleepInput = document.getElementById("sleep-input");
+var otherInput = document.getElementById("other-input");
 
 init();
 
@@ -231,6 +232,31 @@ function addClickHandler() {
   });
 }
 
+// Get the amount of sleep
+sleepInput.addEventListener("keypress", function(event) {
+  if(event.key === "Enter") {
+    console.log(sleepInput.value);
+    addOther(sleepInput.value);
+  }
+});
+
+// Get the value of other number
+otherInput.addEventListener("keypress", function(event) {
+  if(event.key === "Enter") {
+    console.log(otherInput.value)
+    addOther(otherInput.value);
+  }
+});
+
+function addOther(sleepNumber, otherNumber) {
+  var totalOther = (sleepNumber + otherNumber)
+
+  console.log(totalOther);
+ }
+
+
+
+// see how many seasons a show has
 function howManySeasons(tvId) {
 
 var howManySeasonsUrl = baseUrl + "/tv/" + tvId + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
@@ -262,8 +288,7 @@ function howManyEpisodes(seasonNumbers) {
     runTimes(data.episodes);
     console.log(data.episodes);
   });
-}
-}
+}}
 }
  
 var totalRunTime = [];
@@ -279,9 +304,12 @@ function runTimes(episodes) {
   for (var i = 0; i < totalRunTime.length; i++) {
     sum += totalRunTime[i];
   }
+
+  sumTwo = sum;
+  sumTwo += 3240; //sumTwo = sumTwo + other inputted values
  
-  console.log(sum);
-  timeCalculation(sum);
+  console.log(sumTwo);
+  timeCalculation(sumTwo);
 }
 
 function timeCalculation(sum) {
@@ -303,20 +331,33 @@ function timeCalculation(sum) {
  var remaindingMinutes = (minutesToHours%60);
  console.log(remaindingMinutes);
 
+
+//  allows days, hours, and minutes to display to homepage
+
  var dhm = [days, hours, remaindingMinutes];
  console.log(dhm);
  displayCalculator(dhm);
 
  function displayCalculator(times) {
     var daysText = document.getElementById("days-number");
-    daysText.textContent = times[0];
+    daysText.textContent = (times[0] + " days");
+    if (times[0] == 1) {
+      daysText.textContent = (times[0] + " day")
+    }
 
     var hoursText = document.getElementById("hours-number");
-    hoursText.textContent = times[1];
+    hoursText.textContent = (times[1] + " hours");
+    if (times[1] == 1) {
+      hoursText.textContent = (times[1] + " hour")
+    }
 
     var minutesText = document.getElementById("minutes-number");
-    minutesText.textContent = times[2];
+    minutesText.textContent = (times[2] + " minutes");
+    if (times[2] == 1) {
+      minutesText.textContent = (times[2] + " minute")
+    }
  }
+  
 
 }
 
