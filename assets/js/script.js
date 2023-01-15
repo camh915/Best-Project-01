@@ -7,10 +7,11 @@ var savedList = document.querySelector("#saved-list");
 var titles = [];
 
 var SearchEL = document.getElementById("title-search");
-
 var btnContainer = document.querySelector(".list-group");
-
 var savedBtns = btnContainer.getElementsByClassName("a");
+
+var sleepInput = document.getElementById("sleep-input");
+var otherInput = document.getElementById("other-input");
 
 init();
 
@@ -231,6 +232,21 @@ function addClickHandler() {
   });
 }
 
+// Get the amount of sleep
+sleepInput.addEventListener("keypress", function(event) {
+  if(event.key === "Enter") {
+    console.log(sleepInput.value)
+  }
+});
+
+// Get the amount of other activites
+otherInput.addEventListener("keypress", function(event) {
+  if(event.key === "Enter") {
+    console.log(otherInput.value)
+  }
+});
+
+// see how many seasons a show has
 function howManySeasons(tvId) {
 
 var howManySeasonsUrl = baseUrl + "/tv/" + tvId + "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
@@ -262,8 +278,7 @@ function howManyEpisodes(seasonNumbers) {
     runTimes(data.episodes);
     console.log(data.episodes);
   });
-}
-}
+}}
 }
  
 var totalRunTime = [];
