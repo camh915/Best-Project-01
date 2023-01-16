@@ -1,3 +1,11 @@
+h1 {
+  margin-top: 40px;
+  padding: 20px;
+  border: 5px groove orange;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px rgb(245, 179, 58);
+}
+
 .input-group-text {
   background-color: orange;
   width: 50%;
@@ -64,4 +72,22 @@
 #calculator-displays {
   font-size: 80px;
   margin-left: 300px;
+}
+
+.header-section {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+
+#featured-shows {
+  padding: 20px;
+}
+
+#featured-shows-cards {
+  margin-left: 300px;
+}
+
+#other-inputs-container {
+  margin-top: 40px;
 }

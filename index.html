@@ -14,13 +14,67 @@
  
   <body class="bg-dark">
     <header class="h1 d-flex justify-content-center w-auto">
-      Binge Show Calculator
+      <h1>Binge Show Calculator</h1>
     </header>
+
+    <!-- Put the inputs for both sleep and other under one container -->
+    <div id="other-inputs-container">
+      <div class = "header-section">
+        Enter two times below, click enter, then pick which show you would like to binge!
+      </div>
+      <div class = "header-section">
+        Pick from Featured Shows or search for one of your favorites!
+      </div>
  
+      <div class="inputs-section">
+        <!-- Hours of sleep box -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default w-"
+            >Hours of Sleep Per Day
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+            placeholder="Hopefully 7-8"
+            id="sleep-input"
+          />
+        </div>
+      </div>
+
+      <div class="inputs-section">
+        <!-- Hours of Other Life Things box -->
+        <div class="input-group mb-3" >
+          <span class="input-group-text" id="inputGroup-sizing-default w-"
+            >Hours of Other Activities Per Day</span
+          >
+
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Input hours of other life things"
+            placeholder="Showering, Eating, Weightlifting..."
+            id="other-input"
+          />
+        </div>
+      </div>
+
+      <div class = "header-section" id="numbers-entered">
+      </div>
+
+    </div>
+ 
+
+    <div class="h1 d-flex justify-content-center w-auto" id="featured-shows">
+      Featured Shows
+    </div>
+    <!-- Featured Shows Section -->
     <div
-      id="featured-shows"
+      id="featured-shows-cards"
       class="container row d-flex justify-content-center col-12 gap-2"
     >
+
       <div class="card movie-card w-4" style="width: 15rem">
         <img class="card-img-top" alt="..." />
         <div class="card-body">
@@ -44,43 +98,7 @@
       </div>
     </div>
  
-<!-- Put the inputs for both sleep and other under one container -->
-        <div id="other-inputs-container">
- 
-          <div class="inputs-section">
-            <!-- Hours of sleep box -->
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-default w-"
-                >Hours of sleep
-              </span>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-                id="sleep-input"
-              />
-            </div>
-          </div>
- 
-          <div class="inputs-section">
-            <!-- Hours of Other Life Things box -->
-            <div class="input-group mb-3" >
-              <span class="input-group-text" id="inputGroup-sizing-default w-"
-                >Hours of Other Life Things</span
-              >
- 
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Input hours of other life things"
-                id="other-input"
-              />
-            </div>
-          </div>
- 
-        </div>
- 
+
     <main class="container my-4">
       <!-- search bar for show/movie -->
       <div class="inputs-section">

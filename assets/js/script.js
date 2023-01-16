@@ -13,6 +13,7 @@ var savedBtns = btnContainer.getElementsByClassName("a");
 var sleepInput = document.getElementById("sleep-input");
 var otherInput = document.getElementById("other-input");
 var otherInputsContainer = document.getElementById("other-inputs-container");
+var numbersEnteredText = document.getElementById("numbers-entered");
  
  
 init();
@@ -255,10 +256,9 @@ var otherNumbers = [];
 otherInputsContainer.addEventListener("keypress", function(event) {
   console.log(event);
   if (event.key === "Enter") {
-   
- 
-    sleepNumber = Number(sleepInput.value * 420);
-    otherNumber = Number(otherInput.value * 60);
+
+    sleepNumber = Number(sleepInput.value * 420); //value * 7 days * 60 minutes in an hour
+    otherNumber = Number(otherInput.value * 420); //value * 7 days * 60 minutes in an hour
  
     otherNumbers.push(sleepNumber, otherNumber);
     console.log(otherNumbers);
@@ -272,14 +272,11 @@ otherInputsContainer.addEventListener("keypress", function(event) {
       localStorage.setItem("otherTimes", totalOther);
      
     }
-     
+
+    numbersEnteredText.textContent = "Your Numbers Have Been Logged!"
      }
   }
 );
- 
- 
- 
- 
  
 // see how many seasons a show has
 function howManySeasons(tvId) {
@@ -287,7 +284,7 @@ function howManySeasons(tvId) {
     baseUrl +
     "/tv/" +
     tvId +
-    "api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
+    "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
  
   fetch(howManySeasonsUrl)
     .then(function (response) {
