@@ -20,6 +20,7 @@ function renderTrailer(video) {
   iframeEl.src = youtubeUrl;
   iframeEl.height = "400";
   iframeEl.width = "800";
+  iframeEl.allowFullscreen = true;
   trailerEl.append(iframeEl);
 }
 
@@ -29,6 +30,7 @@ function getTrailer(videos) {
     var video = videos[i];
     if (video.type === "Trailer") {
       renderTrailer(video);
+      return;
     }
   }
 }
