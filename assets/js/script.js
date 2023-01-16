@@ -287,7 +287,7 @@ function howManySeasons(tvId) {
     baseUrl +
     "/tv/" +
     tvId +
-    "api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
+    "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
  
   fetch(howManySeasonsUrl)
     .then(function (response) {
