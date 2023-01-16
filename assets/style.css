@@ -86,10 +86,24 @@ h1 {
   margin-top: 40px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   #search-results {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  #tv-show-info {
+    flex-direction: column;
+  }
+
+  #tv-show-image img {
+    height: 200px;
+    width: 200px;
+    object-fit: fill;
+  }
+
+  iframe {
+    height: 200px;
+    width: 300px;
   }
 }
