@@ -91,6 +91,13 @@ function renderShowDetails(show) {
   castNameEl.innerText = "Cast:";
   document.getElementById("cast-title").append(castNameEl);
 
+  if (show.credits.cast.length === 0) {
+    var creditDetail = document.createElement("p");
+    $(creditDetail).addClass("credit");
+    creditDetail.innerText = "N/A";
+    document.getElementById("cast-list").append(creditDetail);
+  }
+
   for (var i = 0; i < show.credits.cast.length; i++) {
     var creditDetail = document.createElement("p");
     $(creditDetail).addClass("credit");
