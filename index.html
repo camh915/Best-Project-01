@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Homepage</title>
   </head>
- 
+
   <body class="bg-dark">
     <header class="h1 d-flex justify-content-center w-auto">
       <h1>Binge Show Calculator</h1>
@@ -19,13 +19,14 @@
 
     <!-- Put the inputs for both sleep and other under one container -->
     <div id="other-inputs-container">
-      <div class = "header-section">
-        Enter two times below, click enter, then pick which show you would like to binge!
+      <div class="header-section">
+        Enter two times below, click enter, then pick which show you would like
+        to binge!
       </div>
-      <div class = "header-section">
+      <div class="header-section">
         Pick from Featured Shows or search for one of your favorites!
       </div>
- 
+
       <div class="inputs-section">
         <!-- Hours of sleep box -->
         <div class="input-group mb-3">
@@ -45,7 +46,7 @@
 
       <div class="inputs-section">
         <!-- Hours of Other Life Things box -->
-        <div class="input-group mb-3" >
+        <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default w-"
             >Hours of Other Activities Per Day</span
           >
@@ -60,11 +61,8 @@
         </div>
       </div>
 
-      <div class = "header-section" id="numbers-entered">
-      </div>
-
+      <div class="header-section" id="numbers-entered"></div>
     </div>
- 
 
     <div class="h1 d-flex justify-content-center w-auto" id="featured-shows">
       Featured Shows
@@ -74,7 +72,6 @@
       id="featured-shows-cards"
       class="container row d-flex justify-content-center col-12 gap-2"
     >
-
       <div class="card movie-card w-4" style="width: 15rem">
         <img class="card-img-top" alt="..." />
         <div class="card-body">
@@ -97,7 +94,6 @@
         </div>
       </div>
     </div>
- 
 
     <main class="container my-4">
       <!-- search bar for show/movie -->
@@ -106,13 +102,16 @@
           <label class="col-form-label">Search for Series:</label>
         </div>
         <div class="col-auto">
-          <input id="title-search" class="form-control"/>
+          <input id="title-search" class="form-control" />
         </div>
       </div>
- 
+
       <!-- div to show the search results -->
-      <div id="search-results"></div>
- 
+      <div
+        id="search-results"
+        class="container row d-flex justify-content-center col-12 gap-2"
+      ></div>
+
       <div class="inputs-section">
         <div class="list-group mt-2 mb-2 col-4" id="saved-list">
           <a href="#" class="list-group-item list-group-item-action">
@@ -129,33 +128,28 @@
           >
         </div>
       </div>
- 
- 
- 
     </main>
- 
+
     <section class="container row mb-2" id="calculator-displays">
-      <div class="col 3 text-center">
-        It Will Take You:
-      </div>
- 
+      <div class="col 3 text-center">It Will Take You:</div>
+
       <div class="container row d-flex">
         <div class="col 3 text-center" id="days">
           <span class="date_num" id="days-number"></span>
         </div>
         <div class="col 3 text-center" id="hours">
-          <span class="date_num" id ="hours-number"></span>
+          <span class="date_num" id="hours-number"></span>
         </div>
         <div class="col 3 text-center" id="minutes">
           <span class="date_num" id="minutes-number"></span>
         </div>
       </div>
- 
+
       <div class="container row d-flex">
         <span class="col 3 text-center" id="enjoy"></span>
       </div>
     </section>
- 
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="./assets/js/script.js"></script>

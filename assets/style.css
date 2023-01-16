@@ -1,3 +1,9 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1 {
   margin-top: 40px;
   padding: 20px;
@@ -11,15 +17,6 @@ h1 {
   width: 50%;
 }
 
-.input-group {
-  width: 30%;
-}
-
-.card {
-  width: 50%;
-  text-align: center;
-}
-
 #search-results {
   display: flex;
   gap: 8px;
@@ -29,6 +26,8 @@ h1 {
 .movie-card {
   border: 1px solid white;
   padding: 8px;
+  width: 15rem;
+  text-align: center;
 }
 
 .action-buttons {
@@ -64,14 +63,13 @@ h1 {
   justify-content: center;
   margin-top: 40px;
 }
- 
+
 #title-search {
   margin-left: 20px;
 }
- 
+
 #calculator-displays {
   font-size: 80px;
-  margin-left: 300px;
 }
 
 .header-section {
@@ -84,10 +82,14 @@ h1 {
   padding: 20px;
 }
 
-#featured-shows-cards {
-  margin-left: 300px;
-}
-
 #other-inputs-container {
   margin-top: 40px;
+}
+
+@media (max-width: 800px) {
+  #search-results {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
