@@ -9,9 +9,29 @@ var createdBy = document.getElementById("created-by");
 var tvDescriptionEl = document.getElementById("tv-description");
 var castDetailEl = document.getElementById("cast-credits");
 var ratingEl = document.getElementById("rating");
+var trailerEl = document.getElementById("tv-show-trailer");
 
 var showsId = localStorage.getItem("showsId");
 console.log(showsId);
+
+function renderTrailer(video) {
+  var youtubeUrl = "https://www.youtube.com/embed/" + video.key;
+  var iframeEl = document.createElement("iframe");
+  iframeEl.src = youtubeUrl;
+  iframeEl.height = "400";
+  iframeEl.width = "800";
+  trailerEl.append(iframeEl);
+}
+
+function getTrailer(videos) {
+  // get the trailer video from the list of videos
+  for (var i = 0; i < videos.length; i++) {
+    var video = videos[i];
+    if (video.type === "Trailer") {
+      renderTrailer(video);
+    }
+  }
+}
 
 function renderShowDetails(show) {
   console.log(show);
@@ -27,7 +47,7 @@ function renderShowDetails(show) {
   showsPosterEl.src = posterUrl;
   showsPosterEl.height = 700;
   showsPosterEl.width = 500;
-  showsPosterEl.style.objectFit = "cover";
+  showsPosterEl.style.objectFit = "fill";
   tvShowImageEl.append(showsPosterEl);
 
   //Add genres type
@@ -81,6 +101,8 @@ function renderShowDetails(show) {
   $(showRating).addClass("rate");
   showRating.innerText = "Rating : " + show.vote_average;
   ratingEl.append(showRating);
+
+  getTrailer(show.videos.results);
 }
 
 function getTvShowData() {
