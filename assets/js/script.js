@@ -15,6 +15,8 @@ var otherInput = document.getElementById("other-input");
 var otherInputsContainer = document.getElementById("other-inputs-container");
 var numbersEnteredText = document.getElementById("numbers-entered");
 
+var totalRunTime = [];
+
 init();
 
 function searchTvShow(searchText) {
@@ -252,6 +254,7 @@ function addClickHandler() {
 
   $(".btn-binge").on("click", function (event) {
     console.log("btnclick");
+    totalRunTime = [];
     var tvId = event.target.getAttribute("data-tv-id");
     console.log(tvId);
     localStorage.setItem("showsId", tvId);
@@ -291,7 +294,6 @@ function howManySeasons(tvId) {
     tvId +
     "?api_key=6f740c06220cb598e70409f4b591536e&language=en-US";
 
-
   fetch(howManySeasonsUrl)
     .then(function (response) {
       console.log(response);
@@ -321,14 +323,15 @@ function howManySeasons(tvId) {
           return response.json();
         })
         .then(function (data) {
-          runTimes(data.episodes);
+          if (data.episodes) {
+            runTimes(data.episodes);
+          }
           console.log(data.episodes);
         });
     }
   }
 }
 
-var totalRunTime = [];
 // get the runtimes for each episode
 function runTimes(episodes) {
   for (var i = 0; i < episodes.length; i++) {
@@ -342,12 +345,12 @@ function runTimes(episodes) {
     sum += totalRunTime[i];
   }
 
-  sumTwo = sum;
+  var sumTwo = sum;
   var otherTime = Number(localStorage.getItem("otherTimes"));
-  console.log(otherTime);
+  console.log("other times", otherTime);
   sumTwo += otherTime; //sumTwo = sumTwo + other inputted values
 
-  console.log(sumTwo);
+  console.log("sumTwo", sumTwo);
   timeCalculation(sumTwo);
 }
 
