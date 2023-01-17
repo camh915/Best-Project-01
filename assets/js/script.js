@@ -41,7 +41,7 @@ function searchTvShow(searchText) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       displaySearchResult(data.results);
       // howManySeasons(data.results[0].id);
     });
@@ -131,7 +131,6 @@ function popularShows() {
 }
 
 function displayPopularShows(results) {
-  console.log(results);
 
   for (var i = 0; i < POPULAR_SHOW_COUNT; i++) {
     var show = results[i];
@@ -235,16 +234,16 @@ function getAdvice(){
 
     fetch(adviceURL)
         .then(function(response){
-            console.log(response);
+            // console.log(response);
             return response.json();
         })
         .then(function(data){
-            console.log(data)
-            console.log(data.slip.advice)
+            // console.log(data)
+            // console.log(data.slip.advice)
             renderAdvice(data.slip.advice)
         })
         var advice = data.slip.advice
-        console.log(advice)
+        // console.log(advice)
 }
 
 adviceBtn.addEventListener('click', function(){
@@ -254,10 +253,10 @@ adviceBtn.addEventListener('click', function(){
 // displays the saved list when page initializes
 function init() {
   var storedTitles = JSON.parse(localStorage.getItem("titles"));
-  console.log(storedTitles);
+  // console.log(storedTitles);
 
   if (storedTitles !== null) {
-    console.log("titles saved");
+    // console.log("titles saved");
     titles = storedTitles;
   }
 
@@ -304,35 +303,42 @@ searchEL.addEventListener("keypress", function (event) {
 // creating a event handler function which gets called when items are searched for
 function addClickHandler() {
   $(".btn-char").on("click", function () {
-    console.log("btnclick");
+    // console.log("btnclick");
     document.location.href = "./characters.html";
   });
 
   $(".btn-show").on("click", function (event) {
-    console.log("btnclick");
+    // console.log("btnclick");
     var tvId = event.target.getAttribute("data-tv-id");
-    console.log(tvId);
+    // console.log(tvId);
     localStorage.setItem("showsId", tvId);
     document.location.href = "./details.html";
   });
 
   $(".btn-binge").on("click", function (event) {
-    console.log("btnclick");
+    // console.log("btnclick");
     totalRunTime = [];
     var tvId = event.target.getAttribute("data-tv-id");
-    console.log(tvId);
+    // console.log(tvId);
     localStorage.setItem("showsId", tvId);
     howManySeasons(tvId);
   });
 }
 
-var otherNumbers = [];
+
+// CALCULATOR SECTION
+// The following code does the math and renders the display for the Binge Calculator
+
+// Get user inputs for time not spent watching show
+// var otherNumbers = [];
 // Get the amount of sleep
 otherInputsContainer.addEventListener("keypress", function (event) {
-  console.log(event);
+  localStorage.removeItem("otherTimes")
+  var otherNumbers = [];
+
   if (event.key === "Enter") {
-    console.log(sleepInput.value);
-    console.log(otherInput.value);
+    // console.log(sleepInput.value);
+    // console.log(otherInput.value);
 
     if (sleepInput.value == "") {
       alert("Please enter a value for other activities!");
@@ -346,7 +352,7 @@ otherInputsContainer.addEventListener("keypress", function (event) {
     otherNumber = Number(otherInput.value * 420); //value * 7 days * 60 minutes in an hour
 
     otherNumbers.push(sleepNumber, otherNumber);
-    console.log(otherNumbers);
+    // console.log(otherNumbers);
 
     var totalOther = 0;
 
@@ -362,7 +368,7 @@ otherInputsContainer.addEventListener("keypress", function (event) {
   }
 });
 
-
+// CALCULATE TOTAL MINUTES IN SHOW:
 // see how many seasons a show has
 function howManySeasons(tvId) {
   var howManySeasonsUrl =
@@ -437,21 +443,21 @@ function timeCalculation(sum) {
 
   // shows us how many days
   var days = Math.floor(sum / dayMinutes);
-  console.log(days);
+  // console.log(days);
 
   // shows us how many hours
   var minutesToHours = sum % dayMinutes;
   var hours = Math.floor(minutesToHours / 60);
-  console.log(hours);
+  // console.log(hours);
 
   //  shows us how many minutes
   var remaindingMinutes = minutesToHours % 60;
-  console.log(remaindingMinutes);
+  // console.log(remaindingMinutes);
 
   //  allows days, hours, and minutes to display to homepage
 
   var dhm = [days, hours, remaindingMinutes];
-  console.log(dhm);
+  // console.log(dhm);
   displayCalculator(dhm);
 
   function displayCalculator(times) {
@@ -482,7 +488,7 @@ function addClickListenerForSearchedText() {
   $(".list-group-item-action").on("click", function (event) {
     event.preventDefault();
     var tvShowName = event.target.textContent;
-    console.log(tvShowName);
+    // console.log(tvShowName);
     searchTvShow(tvShowName);
   });
 }
