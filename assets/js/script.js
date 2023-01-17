@@ -335,10 +335,10 @@ otherInputsContainer.addEventListener("keypress", function (event) {
     console.log(otherInput.value);
 
     if (sleepInput.value == "") {
-      alert("Please enter a value for other activities!");
+      alert("Please enter a value for sleep!");
       return;
     } else if (otherInput.value == "") {
-      alert("Please enter a value for sleep!");
+      alert("Please enter a value for other activities!");
       return;
     } else {
 
