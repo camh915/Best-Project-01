@@ -22,6 +22,8 @@ var POPULAR_SHOW_COUNT = 5;
 
 var totalRunTime = [];
 
+var autocompleteList = document.getElementById("searches");
+
 init();
 
 function searchTvShow(searchText) {
@@ -252,6 +254,18 @@ function init() {
 
   renderTitles();
   popularShows();
+  autocomplete();
+}
+
+// adds autocomplete feature to search bar
+function autocomplete() {
+  autocompleteList.innerHTML = "";
+  
+  for (var i = 0; i < titles.length; i++) {
+    var option = document.createElement("option");
+    option.innerHTML = titles[i];
+    autocompleteList.append(option);
+  }
 }
 
 searchEL.addEventListener("keypress", function (event) {
@@ -272,6 +286,9 @@ searchEL.addEventListener("keypress", function (event) {
 
     // calling function to search for the tv show entered
     searchTvShow(searchText);
+
+    // adds previously searched titles to search bar
+    autocomplete();
   }
 });
 
