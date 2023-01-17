@@ -287,7 +287,7 @@ searchEL.addEventListener("keypress", function (event) {
     // store the searched text in titles array and save the data to localStorage
     titles.push(searchText);
     storeSavedTitles();
-    console.log(titles);
+    // console.log(titles);
 
     // re-render to show newly added text
     // renderTitles();
