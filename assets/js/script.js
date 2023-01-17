@@ -9,7 +9,7 @@ var titles = [];
 
 var searchEL = document.getElementById("title-search");
 var btnContainer = document.querySelector(".list-group");
-var savedBtns = btnContainer.getElementsByClassName("a");
+// var savedBtns = btnContainer.getElementsByClassName("a");
 
 var adviceURL = 'https://api.adviceslip.com/advice'
 var adviceBtn = document.getElementById('advice-slip');
@@ -118,7 +118,6 @@ function displaySearchResult(results) {
   addClickHandler();
 }
 
-// console.log(popularShows());
 
 function popularShows() {
   fetch(popularUrl)
@@ -192,26 +191,26 @@ function storeSavedTitles() {
   localStorage.setItem("titles", JSON.stringify(titles));
 }
 
-// adds the saved titles to the saved list
-function renderTitles() {
-  savedList.innerHTML = "";
+// Displays the saved titles in a list onscreen
+// function renderTitles() {
+//   // savedList.innerHTML = "";
 
-  // console.log(titles);
-  for (var i = 0; i < titles.length; i++) {
-    var a = document.createElement("a"); //<a></a>
-    a.setAttribute("class", "list-group-item list-group-item-action");
-    // href # is placeholder
-    a.setAttribute("href", "#");
+//   // console.log(titles);
+//   for (var i = 0; i < titles.length; i++) {
+//     var a = document.createElement("a"); //<a></a>
+//     a.setAttribute("class", "list-group-item list-group-item-action");
+//     // href # is placeholder
+//     a.setAttribute("href", "#");
 
-    // link should display one of the saved titles from the array
-    a.innerText = titles[i];
+//     // link should display one of the saved titles from the array
+//     a.innerText = titles[i];
 
-    savedList.append(a);
-  }
+//     savedList.append(a);
+//   }
 
-  // calling this function to attach listener to all the search text when re-rendered
-  addClickListenerForSearchedText();
-}
+//   // calling this function to attach listener to all the search text when re-rendered
+//   addClickListenerForSearchedText();
+// }
 
 // RANDOM ADVICE GENERATOR
 // The following two functions call an API to generate a random piece of advice, and then renders that advice on the homepage's footer
@@ -262,7 +261,7 @@ function init() {
     titles = storedTitles;
   }
 
-  renderTitles();
+  // renderTitles();
   popularShows();
   autocomplete();
 }
@@ -292,7 +291,7 @@ searchEL.addEventListener("keypress", function (event) {
     console.log(titles);
 
     // re-render to show newly added text
-    renderTitles();
+    // renderTitles();
 
     // calling function to search for the tv show entered
     searchTvShow(searchText);
