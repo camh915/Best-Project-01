@@ -272,6 +272,17 @@ var otherNumbers = [];
 otherInputsContainer.addEventListener("keypress", function (event) {
   console.log(event);
   if (event.key === "Enter") {
+    console.log(sleepInput.value);
+    console.log(otherInput.value);
+
+    if (sleepInput.value == "") {
+      alert("Please enter a value for other activities!");
+      return;
+    } else if (otherInput.value == "") {
+      alert("Please enter a value for sleep!");
+      return;
+    } else {
+
     sleepNumber = Number(sleepInput.value * 420); //value * 7 days * 60 minutes in an hour
     otherNumber = Number(otherInput.value * 420); //value * 7 days * 60 minutes in an hour
 
@@ -288,8 +299,10 @@ otherInputsContainer.addEventListener("keypress", function (event) {
     }
 
     numbersEnteredText.textContent = "Your Numbers Have Been Logged!";
+    }
   }
 });
+
 
 // see how many seasons a show has
 function howManySeasons(tvId) {
