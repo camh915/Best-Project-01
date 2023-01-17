@@ -125,7 +125,7 @@ function popularShows() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       displayPopularShows(data.results);
     });
 }
@@ -341,10 +341,10 @@ otherInputsContainer.addEventListener("keypress", function (event) {
     // console.log(otherInput.value);
 
     if (sleepInput.value == "") {
-      alert("Please enter a value for sleep!");
+      alert("Please enter a value for other activities!");
       return;
     } else if (otherInput.value == "") {
-      alert("Please enter a value for other activities!");
+      alert("Please enter a value for sleep!");
       return;
     } else {
 
@@ -359,7 +359,7 @@ otherInputsContainer.addEventListener("keypress", function (event) {
     for (var i = 0; i < otherNumbers.length; i++) {
       totalOther += otherNumbers[i];
 
-      console.log(totalOther);
+      // console.log(totalOther);
       localStorage.setItem("otherTimes", totalOther);
     }
 
@@ -379,13 +379,13 @@ function howManySeasons(tvId) {
 
   fetch(howManySeasonsUrl)
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(data.seasons);
-      console.log(data.seasons.length);
+      // console.log(data);
+      // console.log(data.seasons);
+      // console.log(data.seasons.length);
       howManyEpisodes(data.seasons.length);
     });
 
@@ -409,7 +409,7 @@ function howManySeasons(tvId) {
           if (data.episodes) {
             runTimes(data.episodes);
           }
-          console.log(data.episodes);
+          // console.log(data.episodes);
         });
     }
   }
@@ -418,10 +418,10 @@ function howManySeasons(tvId) {
 // get the runtimes for each episode
 function runTimes(episodes) {
   for (var i = 0; i < episodes.length; i++) {
-    console.log(episodes[i].runtime);
+    // console.log(episodes[i].runtime);
     totalRunTime.push(episodes[i].runtime);
   }
-  console.log(totalRunTime);
+  // console.log(totalRunTime);
   var sum = 0;
 
   for (var i = 0; i < totalRunTime.length; i++) {
@@ -430,10 +430,10 @@ function runTimes(episodes) {
 
   var sumTwo = sum;
   var otherTime = Number(localStorage.getItem("otherTimes"));
-  console.log("other times", otherTime);
+  // console.log("other times", otherTime);
   sumTwo += otherTime; //sumTwo = sumTwo + other inputted values
 
-  console.log("sumTwo", sumTwo);
+  // console.log("sumTwo", sumTwo);
   timeCalculation(sumTwo);
 }
 
