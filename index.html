@@ -17,6 +17,21 @@
       <h1>Binge Show Calculator</h1>
     </header>
 
+    <div class="inputs-section">
+      <div class="col-auto">
+        <label class="col-form-label">Search for Series:</label>
+      </div>
+      <div class="col-auto">
+        <input id="title-search" class="form-control" list="searches" />
+      </div>
+    </div>
+
+    <!-- div to show the search results -->
+    <div
+      id="search-results"
+      class="container row d-flex justify-content-center col-12 gap-2"
+    ></div>
+
     <!-- Put the inputs for both sleep and other under one container -->
     <div id="other-inputs-container">
       <div class="header-section">
@@ -93,25 +108,23 @@
           <p class="card-text"></p>
         </div>
       </div>
+      <div class="card movie-card w-4" style="width: 15rem">
+        <img class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+      <div class="card movie-card w-4" style="width: 15rem">
+        <img class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
     </div>
 
     <main class="container my-4">
-      <!-- search bar for show/movie -->
-      <div class="inputs-section">
-        <div class="col-auto">
-          <label class="col-form-label">Search for Series:</label>
-        </div>
-        <div class="col-auto">
-          <input id="title-search" class="form-control" />
-        </div>
-      </div>
-
-      <!-- div to show the search results -->
-      <div
-        id="search-results"
-        class="container row d-flex justify-content-center col-12 gap-2"
-      ></div>
-
       <div class="inputs-section">
         <div class="list-group mt-2 mb-2 col-4" id="saved-list">
           <a href="#" class="list-group-item list-group-item-action">

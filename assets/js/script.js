@@ -1,6 +1,7 @@
 var showsApikey = "6f740c06220cb598e70409f4b591536e";
 var baseUrl = "https://api.themoviedb.org/3";
-var popularUrl = baseUrl + "/tv/popular?language=en-US&api_key=" + showsApikey;
+var popularUrl =
+  baseUrl + "/tv/top_rated?language=en-US&api_key=" + showsApikey;
 var baseImageUrl = "https://image.tmdb.org/t/p/original/";
 var searchResultsEl = $("#search-results");
 var savedList = document.querySelector("#saved-list");
@@ -14,6 +15,7 @@ var sleepInput = document.getElementById("sleep-input");
 var otherInput = document.getElementById("other-input");
 var otherInputsContainer = document.getElementById("other-inputs-container");
 var numbersEnteredText = document.getElementById("numbers-entered");
+var POPULAR_SHOW_COUNT = 5;
 
 var totalRunTime = [];
 
@@ -126,7 +128,7 @@ function popularShows() {
 function displayPopularShows(results) {
   console.log(results);
 
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < POPULAR_SHOW_COUNT; i++) {
     var show = results[i];
 
     // create a card for the tv show
