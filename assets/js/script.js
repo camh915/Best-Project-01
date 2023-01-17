@@ -13,6 +13,7 @@ var savedBtns = btnContainer.getElementsByClassName("a");
 
 var adviceURL = 'https://api.adviceslip.com/advice'
 var adviceBtn = document.getElementById('advice-slip');
+var adviceContainer = document.getElementById('advice-box')
 
 var sleepInput = document.getElementById("sleep-input");
 var otherInput = document.getElementById("other-input");
@@ -215,11 +216,20 @@ function renderTitles() {
 // RANDOM ADVICE GENERATOR
 // The following two functions call an API to generate a random piece of advice, and then renders that advice on the homepage's footer
 function renderAdvice(advice){
+  var adviceEl = document.getElementById('adviceEl');
+
+  if(adviceEl != null){
+    var adviceText = document.getElementById('adviceEl');
+
+    adviceText.innerText = advice;
+    return;
+  }else{
     var adviceText = document.createElement('p')
     adviceText.innerText = advice;
+    adviceText.setAttribute("id", "adviceEl")
 
-    var display = document.querySelector('.display')
-    display.appendChild(adviceText)
+    adviceContainer.appendChild(adviceText)
+  };
 }
 
 function getAdvice(){
