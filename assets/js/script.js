@@ -11,6 +11,9 @@ var searchEL = document.getElementById("title-search");
 var btnContainer = document.querySelector(".list-group");
 var savedBtns = btnContainer.getElementsByClassName("a");
 
+var adviceURL = 'https://api.adviceslip.com/advice'
+var adviceBtn = document.getElementById('advice-slip');
+
 var sleepInput = document.getElementById("sleep-input");
 var otherInput = document.getElementById("other-input");
 var otherInputsContainer = document.getElementById("other-inputs-container");
@@ -206,6 +209,36 @@ function renderTitles() {
   // calling this function to attach listener to all the search text when re-rendered
   addClickListenerForSearchedText();
 }
+
+// RANDOM ADVICE GENERATOR
+// The following two functions call an API to generate a random piece of advice, and then renders that advice on the homepage's footer
+function renderAdvice(advice){
+    var adviceText = document.createElement('p')
+    adviceText.innerText = advice;
+
+    var display = document.querySelector('.display')
+    display.appendChild(adviceText)
+}
+
+function getAdvice(){
+
+    fetch(adviceURL)
+        .then(function(response){
+            console.log(response);
+            return response.json();
+        })
+        .then(function(data){
+            console.log(data)
+            console.log(data.slip.advice)
+            renderAdvice(data.slip.advice)
+        })
+        var advice = data.slip.advice
+        console.log(advice)
+}
+
+adviceBtn.addEventListener('click', function(){
+  getAdvice();
+})
 
 // displays the saved list when page initializes
 function init() {
