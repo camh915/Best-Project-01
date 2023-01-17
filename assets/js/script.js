@@ -6,7 +6,7 @@ var searchResultsEl = $("#search-results");
 var savedList = document.querySelector("#saved-list");
 var titles = [];
 
-var SearchEL = document.getElementById("title-search");
+var searchEL = document.getElementById("title-search");
 var btnContainer = document.querySelector(".list-group");
 var savedBtns = btnContainer.getElementsByClassName("a");
 
@@ -200,6 +200,9 @@ function renderTitles() {
 
     savedList.append(a);
   }
+
+  // calling this function to attach listener to all the search text when re-rendered
+  addClickListenerForSearchedText();
 }
 
 // displays the saved list when page initializes
@@ -216,7 +219,7 @@ function init() {
   popularShows();
 }
 
-SearchEL.addEventListener("keypress", function (event) {
+searchEL.addEventListener("keypress", function (event) {
   //console.log(event); //It will console log the event object.
   if (event.key === "Enter") {
     //checking if pressed key is enter or not,we want to run the search only on enter.
@@ -400,3 +403,14 @@ function timeCalculation(sum) {
     enjoy.textContent = "To Watch Your Show - Enjoy!";
   }
 }
+
+function addClickListenerForSearchedText() {
+  $(".list-group-item-action").on("click", function (event) {
+    event.preventDefault();
+    var tvShowName = event.target.textContent;
+    console.log(tvShowName);
+    searchTvShow(tvShowName);
+  });
+}
+
+addClickListenerForSearchedText();
